@@ -1344,7 +1344,8 @@ begin
  PushStyle(Colors, 0);
 
  CurPos.x:= Pos.x;
-
+ CurPos.y:= Pos.y;
+ 
  while (WordNo < Length(Words)) do
   begin
    PreSize  := 0.0;
