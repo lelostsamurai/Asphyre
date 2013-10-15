@@ -1336,6 +1336,11 @@ begin
  if (Frac(RoundScale) >= NoScaleTreshold) then RoundScale:= 1.0;
 
  SplitText(Text);
+ //When last line has single word, it's rendered as part of penultimate line
+ //Adding extra word to the last line fixes it
+ if(Length(Words) > 1)and
+   (Words[High(Words)].ParaNum <> Words[High(Words)-1].ParaNum) then
+  AddWord(' ', Words[High(Words)].ParaNum);
 
  Para  := -1;
  WordNo:= 0;
@@ -1345,7 +1350,7 @@ begin
 
  CurPos.x:= Pos.x;
  CurPos.y:= Pos.y;
- 
+
  while (WordNo < Length(Words)) do
   begin
    PreSize  := 0.0;
